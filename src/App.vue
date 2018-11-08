@@ -3,13 +3,14 @@
       <h1>BATTLE BOTS</h1>
 
       <h2 @click='toggleCreate'>Create a Bot</h2>
-      <h2 @click='toggleList' >See all Bots</h2>
+      <h2 @click='toggleList'>See all Bots</h2>
+      
       <section v-if='showCreate'>
         <Create :add='addBot'/>
       </section>
 
       <section v-if='showList' >
-        <botlist v-for='(bot, i) in botList' :key='i' :bot='bot'/>
+        <botlist v-for='(bot, i) in botList' :key='i' :bot='bot' :i='i' :select='selectBot'/>
       </section>
 
   </div>
@@ -22,7 +23,8 @@ import Create from './components/Create';
 export default {
   data() {
     return {
-      botList: [{name: 'test', attack: '100', health: '50'}],
+      botList: [{name: 'RuPaul', attack: '100', health: '100'}, {name: 'Violet', attack: '80', health: '90'}],
+      selectedBots: [],
       showCreate: true,
       showList: false
     }
@@ -34,17 +36,18 @@ export default {
         attack: attack,
         health: health
     })
-    console.log(this.botList)
     this.toggleList()
     },
     toggleList() {
       this.showCreate = false;
       this.showList = true;
-      console.log(this.showList)
     },
     toggleCreate() {
       this.showCreate = true;
       this.showList = false;
+    },
+    selectBot() {
+      console.log('select')
     }
   },
   components: {
@@ -56,7 +59,7 @@ export default {
 </script>
 
 <style>
-#app {
+body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

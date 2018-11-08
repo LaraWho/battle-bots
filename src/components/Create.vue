@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="create">
         <p>Name: <input v-model='botName' type="text" /> </p>
         <p>Attack Level: <input v-model='attack' type="text" /></p>
         <p>Health Level: <input v-model='health' type="text" /></p>
