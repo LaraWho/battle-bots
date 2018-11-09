@@ -5,12 +5,15 @@
       <h2 @click='toggleCreate'>Create a Bot</h2>
       <h2 @click='toggleList'>See all Bots</h2>
       
+
       <section v-if='showCreate'>
         <Create :add='addBot'/>
       </section>
 
       <section v-if='showList' >
-        <botlist v-for='(bot, i) in botList' :key='i' :bot='bot' :i='i' :select='selectBot'/>
+        <p>Battle Bot #1 is ... {{selectedBots[0]}}</p>
+        <p>Battle Bot #2 is ... {{selectedBots[1]}}</p>
+        <botlist v-for='(bot, i) in botList' :key='i' :bot='bot' :i='i' :select='selectedBots' :botchoice="select"/>
       </section>
 
   </div>
@@ -46,8 +49,12 @@ export default {
       this.showCreate = true;
       this.showList = false;
     },
-    selectBot() {
-      console.log('select')
+    select(bots) {
+      //  this.selectedBots.push({
+      //    bot1: bot1,
+      //    bot2: bot2
+      //  })
+      console.log('selectBot method in app.vue', this.selectedBots, bots)
     }
   },
   components: {

@@ -1,11 +1,10 @@
 <template>
 <div>
-    <p>{{i, bot.name}}</p>
-    <div class="bot-box">
+        <div class="bot-box">
         <p>Name: {{bot.name}}</p>
         <p>Attack Level: {{bot.attack}}</p>
         <p>Health Level: {{bot.health}}</p>
-        <button @click='selectBot'>Select</button>
+        <button @click='selectBot(bot.name)'>Select</button>
         <button>Clear</button>
     </div>
 
@@ -15,16 +14,18 @@
 <script>
 
 export default {
-    props: ['bot', 'i', 'select'],
+    props: ['bot', 'i', 'select', 'botchoice'],
      data() {
         return {
-            selectedBots: []
+            // bot1: '',
+            // bot2: ''
         }
     
 },
 methods: {
-    selectBot() {
-        console.log('wat')
+    selectBot(bot) {
+        this.botchoice(this.select.push(this.bot.name))
+        console.log(this.select)
         }
     }
 }
